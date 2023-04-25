@@ -9,13 +9,13 @@ def index_empleado(request):
 
 def index_equipo(request):
 	equipos = equipo.objects.order_by("nombre")
-	output = ', '.join([eq.nombre for eq in equipo])
+	output = ', '.join([eq.nombre for eq in equipos])
 	return HttpResponse(output)
 
 def index_proceso(request):
 	
 	procesos = proceso.objects.order_by('nombre')
-	output = ', '.join([p.nombre for p in proceso])
+	output = ', '.join([p.nombre for p in procesos])
 	return HttpResponse(output)
 
 
