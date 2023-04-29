@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalle del equipo {% endblock %}
+
+{% block contenido %}
+<h2>Lista de empleados</h2>
+<ul>
+    {% for empleado in lista_empleados %}
+    <li class="listado">
+      <a href="/DeustubularSL_app/empleado/{{empleado.id}}">{{empleado.nombre}} {{empleado.apellidos}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

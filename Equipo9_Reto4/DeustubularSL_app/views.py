@@ -7,6 +7,9 @@ from django.views.generic import DetailView, ListView
 from DeustubularSL_app.forms import LoginForm,FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
 
 
+def index(request):
+    return render(request,'DeustubularSL_app/index.html')
+
 def index_empleado(request):
 	empleados = empleado.objects.order_by('nombre')
 	output = ', '.join([e.nombre for e in empleados])
@@ -93,23 +96,10 @@ class ProcesoCreateView(View):
             procesos.save()
             return redirect('bbbbb')
         return render(request, 'proceso_create.html', {'form': form})
+    
 
-
-
-
-def loginformEmpleado(request):
- form = LoginForm()
- return render(
- request, 'login.html', {'form':form}
- )
-
-def loginformProceso(request):
- form = LoginForm()
- return render(
- request, 'login.html', {'form':form}
- )
-def show_FormEquipo(request):
-     return render(request, "login.html")
+def eliminar(request):
+    return render(request, 'DeustubularSL_app/index_eliminar.html')
 
 
 

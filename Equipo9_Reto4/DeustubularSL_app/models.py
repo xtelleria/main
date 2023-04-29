@@ -1,3 +1,4 @@
+from msilib.schema import ListView
 from django.db import models
 import datetime
 #en un equipo1 puede haber varios procesos n
@@ -31,6 +32,8 @@ class empleado (models.Model):
     FKidProcesp = models.ForeignKey (proceso, on_delete = models.CASCADE)
     def __str__(self):
         return self.nombre
+    
+
 
 
 

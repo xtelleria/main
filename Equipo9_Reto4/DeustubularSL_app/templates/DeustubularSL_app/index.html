@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenido %}
+<h2 id="titulo">Deustubular</h2>
+<h4>Los mejores tubos en las mejores manos</h4>
+
+<form action="{% url 'equipo_create' %}" method="post">
+    {% csrf_token %}
+    {{ formulario.errors }}
+    {{ formulario.as_ul }}
+    
+</form>
+
+{% endblock %}
