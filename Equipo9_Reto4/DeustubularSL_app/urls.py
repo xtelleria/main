@@ -6,8 +6,8 @@ urlpatterns = [
  path('1', views.index_equipo, name='aaaaaa'),
  path('2', views.index_proceso, name='bbbbb'),
  #path('3', views.loginformEquipo, name='index'),
- path('4', views.loginformEmpleado, name='index'),
- path('5', views.loginformProceso, name='index'),
+ #path('4', views.loginformEmpleado, name='index'),
+# path('5', views.loginformProceso, name='index'),
 
      # Paths para crear
  path('2/create', views.EmpleadoCreateView.as_view(), name='empleado_create'),

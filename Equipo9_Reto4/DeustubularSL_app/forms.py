@@ -17,12 +17,12 @@ class FormNuevoEmpleado(ModelForm):
 
 class FormNuevoEquipo(ModelForm):
  class Meta:
-  model = proceso
+  model = equipo
   fields = '__all__'
 
 class FormNuevoProceso(ModelForm):
  class Meta:
-  model = equipo
+  model = proceso
   fields = '__all__'
 
 
