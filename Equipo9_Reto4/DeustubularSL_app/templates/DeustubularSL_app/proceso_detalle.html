@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<h2>HOLA</h2>
+{% block contenido %}
+  <h2>ADIOS</h2>
+  <h1>{{ proceso.nombre }}</h1>
+  <p>Orden de Fabricación: {{ proceso.ordenFabricacion }}</p>
+  <p>Código de Proceso: {{ proceso.codigoProceso }}</p>
+  <p>Referencia: {{ proceso.referencia }}</p>
+  <p>Fecha de Inicio: {{ proceso.fechaIni }}</p>
+  <p>Fecha de Fin: {{ proceso.fechaFin }}</p>
+  <p>Equipo asociado: {{ proceso.FKidEquipo }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for empleado in empleados %}
+        {% if empleado.FKidProcesp.nombre == proceso.nombre %}
+            <tr>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.apellidos }}</td>
+            </tr>
+
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render, redirect
 from .models import equipo, empleado, proceso
 from django.views import View
+from django.shortcuts import redirect
+from django.db.models import Count
 from django.views.generic import DetailView, ListView
 from DeustubularSL_app.forms import LoginForm,FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
 
@@ -10,14 +12,29 @@ from DeustubularSL_app.forms import LoginForm,FormNuevoEmpleado,FormNuevoEquipo,
 def index(request):
     return render(request,'DeustubularSL_app/index.html')
 
-def mostrar_empleados(request, FKidProceso):
-    empleados = empleado.objects.filter(FKidProcesp=FKidProceso)
-    return render(request, 'DeustubularSL_app/empleado_mostrar.html', {'empleados': empleados})
 
-def index_equipo(request):
-	equipos = equipo.objects.order_by("nombre")
-	output = ', '.join([eq.nombre for eq in equipos])
-	return HttpResponse(output)
+def listar_empleados(request):
+    empleados =  empleado.objects.all().order_by('FKidProcesp')
+    context = {'empleados': empleados}
+    return render(request, 'DeustubularSL_app/empleado_mostrar.html', context)
+
+def listar_equipos(request):
+    equipos = equipo.objects.all().order_by('nombre')
+    return render(request, 'DeustubularSL_app/equipo_mostrar.html', {'equipos': equipos})
+
+def listar_procesos(request):
+    procesos = proceso.objects.annotate(num_empleados=Count('empleado'))
+    return render(request, 'DeustubularSL_app/proceso_mostrar.html', {'procesos': procesos})
+
+def detalle_proceso(request, proceso_id):
+    procesos = get_object_or_404(proceso, pk=proceso_id)
+    empleados = empleado.objects.order_by('FKidProcesp')
+    context = {
+        'proceso': procesos,
+        'empleados' : empleados
+    }
+    return render(request, 'DeustubularSL_app/proceso_detalle.html', context)
+
 
 def index_proceso(request):
 	

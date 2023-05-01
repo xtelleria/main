@@ -1,0 +1,21 @@
+{% block titulo %} Lista de Procesos {% endblock %}
+
+{% block contenido %}
+<h1>Lista de procesos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Proceso</th>
+      <th>Número de empleados asignados</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for proceso in procesos %}
+      <tr>
+        <td><a href="{% url 'detalle_proceso' proceso.id %}">{{ proceso.nombre }}</a></td>
+        <td>{{ proceso.num_empleados }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
