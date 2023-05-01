@@ -10,10 +10,9 @@ from DeustubularSL_app.forms import LoginForm,FormNuevoEmpleado,FormNuevoEquipo,
 def index(request):
     return render(request,'DeustubularSL_app/index.html')
 
-def index_empleado(request):
-	empleados = empleado.objects.order_by('nombre')
-	output = ', '.join([e.nombre for e in empleados])
-	return HttpResponse(output)
+def mostrar_empleados(request, FKidProceso):
+    empleados = empleado.objects.filter(FKidProcesp=FKidProceso)
+    return render(request, 'DeustubularSL_app/empleado_mostrar.html', {'empleados': empleados})
 
 def index_equipo(request):
 	equipos = equipo.objects.order_by("nombre")

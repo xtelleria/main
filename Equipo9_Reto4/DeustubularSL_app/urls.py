@@ -3,8 +3,9 @@ from . import views
 
 urlpatterns = [
  path('', views.index, name='index'),
- path('1', views.index_empleado, name='aaaaaa'),
+ #path('1', views.index_empleado, name='aaaaaa'),
  path('2', views.index_equipo, name='aaaaaa'),
+ path('1/<int:FKidProceso>', views.mostrar_empleados, name='mostrar_empleados'),
  path('3', views.index_proceso, name='bbbbb'),
  #path('3', views.loginformEquipo, name='index'),
  #path('4', views.loginformEmpleado, name='index'),

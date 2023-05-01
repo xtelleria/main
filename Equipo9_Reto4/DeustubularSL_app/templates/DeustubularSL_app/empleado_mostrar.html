@@ -3,12 +3,13 @@
 {% block titulo %} Detalle del equipo {% endblock %}
 
 {% block contenido %}
-<h2>Lista de empleados</h2>
+<h1>Lista de empleados para el proceso {{FKidProceso}}</h1>
+
 <ul>
-    {% for empleado in lista_empleados %}
-    <li class="listado">
-      <a href="/DeustubularSL_app/empleado/{{empleado.id}}">{{empleado.nombre}} {{empleado.apellidos}}</a>
-    </li>
+    {% for empleado in empleados %}
+        <li>Nombre: {{ empleado.nombre }}</li>
+        <li>Apellido: {{ empleado.apellidos }}</li>
     {% endfor %}
-  </ul>
+
+</ul>
 {% endblock %}
