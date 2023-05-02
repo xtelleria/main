@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo %} Equipos {% endblock %}
+
+{% block contenido %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Modelo</th>
+            <th>Fecha en la que adquirio</th>
+            <th>Fecha en la que se instalo </th>
+            <th>Categoria de el equipo</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>        
+        {% for equipo in equipos %}
+        <tr>
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.modelo }}</td>
+          <td>{{ equipo.fechaAdquisicion }}</td>
+          <td>{{ equipo.fechaInstalacion }}</td>
+          <td>{{ equipo.categoria }}</td>
+          <td>
+            <form action="{% url 'eliminar_equipo' equipo.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

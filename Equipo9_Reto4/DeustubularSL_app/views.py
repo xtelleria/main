@@ -118,6 +118,36 @@ def eliminar(request):
     return render(request, 'DeustubularSL_app/index_eliminar.html')
 
 
+def lista_empleados(request):
+    empleados = empleado.objects.all()
+    context = {'empleados': empleados}
+    return render(request, 'DeustubularSL_app/lista_empleados_a_borrar.html', context)
+
+def eliminar_empleado(request, id_empleado):
+    empleados = get_object_or_404(empleado, id=id_empleado)
+    empleados.delete()
+    return redirect('lista_empleados')
+
+def lista_procesos(request):
+    procesos = proceso.objects.all()
+    context = {'procesos': procesos}
+    return render(request, 'DeustubularSL_app/lista_procesos_a_borrar.html', context)
+def eliminar_proceso(request, id_proceso):
+    procesos = get_object_or_404(proceso, id=id_proceso)
+    procesos.delete()
+    return redirect('lista_procesos')
+
+def lista_equipos(request):
+    equipos = equipo.objects.all()
+    context = {'equipos': equipos}
+    return render(request, 'DeustubularSL_app/lista_equipos_a_borrar.html', context)
+def eliminar_equipo(request, id_equipo):
+    equipos = get_object_or_404(proceso, id=id_equipo)
+    equipos.delete()
+    return redirect('lista_equipos')
+
+
+
 
 
 

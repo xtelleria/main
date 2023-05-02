@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
-<h2>HOLA</h2>
+{% block titulo %} Proceso detalle {% endblock %}
 {% block contenido %}
-  <h2>ADIOS</h2>
   <h1>{{ proceso.nombre }}</h1>
   <p>Orden de Fabricación: {{ proceso.ordenFabricacion }}</p>
   <p>Código de Proceso: {{ proceso.codigoProceso }}</p>
@@ -9,7 +8,7 @@
   <p>Fecha de Inicio: {{ proceso.fechaIni }}</p>
   <p>Fecha de Fin: {{ proceso.fechaFin }}</p>
   <p>Equipo asociado: {{ proceso.FKidEquipo }}</p>
-
+  <h3>Clientes trabajando en este proceso: </h3>
   <table>
     <thead>
       <tr>

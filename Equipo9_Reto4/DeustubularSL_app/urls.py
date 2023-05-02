@@ -19,6 +19,15 @@ urlpatterns = [
  path('4/create', views.ProcesoCreateView.as_view(), name='proceso_create'),
 
  path('eliminar/', views.eliminar, name='eliminar'),
-#path('eliminarEmpleado/', views.eliminarEmpleado.as_view(), name='eliminarEmpleado'),
+ path('eliminar/empleado', views.lista_empleados, name='lista_empleados'),
+ path('eliminar/empleado/<int:id_empleado>/', views.eliminar_empleado, name='eliminar_empleado'),
+
+ path('eliminar/proceso', views.lista_procesos, name='lista_procesos'),
+ path('eliminar/proceso/<int:id_proceso>/', views.eliminar_proceso, name='eliminar_proceso'),
+
+  path('eliminar/equipo', views.lista_equipos, name='lista_equipos'),
+  path('equipos/eliminar/<int:id_equipo>/', views.eliminar_equipo, name='eliminar_equipo'),
+
+
  
 ]
