@@ -6,7 +6,7 @@ from django.views import View
 from django.shortcuts import redirect
 from django.db.models import Count
 from django.views.generic import DetailView, ListView
-from DeustubularSL_app.forms import LoginForm,FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
+from DeustubularSL_app.forms import FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
 #Métodos para la app
 
 #Método index, se dedica a reenviar al usuario al html que muestra la pagina de inicio
