@@ -2,14 +2,8 @@ from django import forms
 from .models import equipo,empleado,proceso
 from django.forms import ModelForm
 
-
-class LoginForm(forms.Form):
- nombreEquipo = forms.CharField(label='nombreEquipo', max_length=100)
- modeloEquipo = forms.EmailField(label='modeloEquipo', max_length=20)
- fechaAdquisicionEquipo = forms.EmailField(label='fechaAdquisicionEquipo', max_length=20)
- fechaInstalacionEquipo = forms.EmailField(label='fechaInstalacionEquipo', max_length=20)
- categoriaEquipo = forms.EmailField(label='categoriaEquipo', max_length=20)
-
+#Aqui se crean los formularios para los modelos,se selecciona el modelo y para cada uno de ellos se cogen todos
+#sus campos gracias a  "fields = '__all__'"
 class FormNuevoEmpleado(ModelForm):
  class Meta:
   model = empleado

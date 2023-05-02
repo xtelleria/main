@@ -7,25 +7,35 @@ from django.shortcuts import redirect
 from django.db.models import Count
 from django.views.generic import DetailView, ListView
 from DeustubularSL_app.forms import LoginForm,FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
+#Métodos para la app
 
-
+#Método index, se dedica a reenviar al usuario al html que muestra la pagina de inicio
 def index(request):
     return render(request,'DeustubularSL_app/index.html')
 
-
+#Método listar_empleados, se dedica a extraer todos los empleados ordenados por 
+#el nombre de el proceso en ascendente,los guarda (en context) y despues redirecciona a la  pagina html correspondiente
+#para poder mostrarlos
 def listar_empleados(request):
     empleados =  empleado.objects.all().order_by('FKidProcesp')
     context = {'empleados': empleados}
     return render(request, 'DeustubularSL_app/empleado_mostrar.html', context)
 
+#Lo mismo que empleados pero para equipo, en este caso se ordenan por el nombre de el equipo en ascendente
 def listar_equipos(request):
     equipos = equipo.objects.all().order_by('nombre')
-    return render(request, 'DeustubularSL_app/equipo_mostrar.html', {'equipos': equipos})
+    context = {'equipos': equipos}
+    return render(request, 'DeustubularSL_app/equipo_mostrar.html', context)
 
+#Método para contar los empleados asociados a un proceso, luego carga una plantilla
+#que muestra Nombre Proceso -- Num empleados, cuando el usuario clicka en un 
+#proceso en concreto se le mostrara los detalles de el mismo
 def listar_procesos(request):
     procesos = proceso.objects.annotate(num_empleados=Count('empleado'))
-    return render(request, 'DeustubularSL_app/proceso_mostrar.html', {'procesos': procesos})
+    context = {'procesos': procesos}
+    return render(request, 'DeustubularSL_app/proceso_mostrar.html', context)
 
+#Método que muestra los detalles de unu proceso segun su id
 def detalle_proceso(request, proceso_id):
     procesos = get_object_or_404(proceso, pk=proceso_id)
     empleados = empleado.objects.order_by('FKidProcesp')
@@ -35,18 +45,9 @@ def detalle_proceso(request, proceso_id):
     }
     return render(request, 'DeustubularSL_app/proceso_detalle.html', context)
 
-
-def index_proceso(request):
-	
-	procesos = proceso.objects.order_by('nombre')
-	output = ', '.join([p.nombre for p in procesos])
-	return HttpResponse(output)
-
-def loginformEquipo(request):
- form = LoginForm()
- return render(
- request, 'login.html', {'form':form}
- )
+#Métodos para mostrar un forulario para la creacion de distintos objetos
+#En todos estos métodos hay dos apartados, cuando la petición es get; Muestra el formulario
+#con los campos a rellenar, y post para alamacenar esos datos
 class EmpleadoCreateView(View):
     # Llamada para mostrar la página con el formulario de creación al usuario
     def get(self, request, *args, **kwargs):
@@ -113,16 +114,19 @@ class ProcesoCreateView(View):
             return redirect('bbbbb')
         return render(request, 'proceso_create.html', {'form': form})
     
-
+#Método que se utiliza para mostrar una pagina de inicio para eliminar objetos,
+#primero muestra los tres modelos principales y despues se podra seleccionar
+#uno de ellos para borrarlo
 def eliminar(request):
     return render(request, 'DeustubularSL_app/index_eliminar.html')
 
-
+#A la hora de borrar, para todos los casos se muestra primero una lista con los objetos
+#y al hacer click en el boton "Eliminar" llamara a la funcion dedicada a eliminar, en todos 
+#los casos se hace por el id de el objeto
 def lista_empleados(request):
     empleados = empleado.objects.all()
     context = {'empleados': empleados}
     return render(request, 'DeustubularSL_app/lista_empleados_a_borrar.html', context)
-
 def eliminar_empleado(request, id_empleado):
     empleados = get_object_or_404(empleado, id=id_empleado)
     empleados.delete()

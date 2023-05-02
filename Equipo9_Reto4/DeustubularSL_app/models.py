@@ -1,8 +1,9 @@
 from msilib.schema import ListView
 from django.db import models
 import datetime
-#en un equipo1 puede haber varios procesos n
-#en un proceso1 varios empl n
+#Modelos para la aplicación de DeustubularSL, en este caso se ha conseiderado que un mismo
+#equipo controla/monitorea varios procesos, y que en un proceso hay varios empleados.
+
 class equipo (models.Model):
     nombre = models.CharField(max_length = 150)
     modelo = models.CharField(max_length = 150)

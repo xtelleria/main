@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+#Urls de el proyecto,para este caso se ha querido que segun se inicie el servidor 
+# se cargue directamente el index sin tener que direccionar a mano 
 urlpatterns = [
  path('',include('DeustubularSL_app.urls')),
  path('admin/', admin.site.urls),
