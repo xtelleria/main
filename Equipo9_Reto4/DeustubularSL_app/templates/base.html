@@ -1,13 +1,16 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="style.css">
+        {% load static %}
+        <link rel="stylesheet" type= "text/css" href="{% static 'style.css' %}">
         <title>{% block titulo %}Deustubular SL{% endblock %}</title>
+
     </head>
     <body>
         <header>
-	        <h1 style="color:rgb(0, 81, 255)">Deustubular SL</h1>
-            <h2>Menú:</h2>
+	        <h1 >Deustubular SL</h1>
             <ul>
                 <li><a href="/ ">Pagina de inicio</a></li>
                 <li><a href="http://127.0.0.1:8000/2/create">Nuevo Empleado</a></li>
@@ -24,9 +27,27 @@
         <main>
             {% block contenido %}{% endblock %}
         </main>
-        <footer id="miLink">
-            <hr>
-            <p>Aplicación desarrollada en Ingeniería Web</p>
-        </footer>
+        <footer>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4">
+                      <h3>Sobre nosotros</h3>
+                      <p>Somos una empresa dedicada a la fabricación de productos de alta calidad.</p>
+                  </div>
+                  <div class="col-md-4">
+                      <h3>Contacto</h3>
+                      <p>Correo electrónico: dustulubar@gmail.com</p>
+                      <p>Teléfono: +34 944 334 394</p>
+                      <p>Dirección: 4 Calle Deusto, Bilbao</p>
+                  </div>
+              </div>
+              <hr>
+              <div class="row">
+                  <div class="col-md-12">
+                      <p class="text-center">© 2023 Todos los derechos reservados</p>
+                  </div>
+              </div>
+          </div>
+      </footer>
     </body>
 </html>

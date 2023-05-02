@@ -67,7 +67,7 @@ class EmpleadoCreateView(View):
             empleados.telfono = form.cleaned_data['telfono']
             empleados.FKidProcesp = form.cleaned_data['FKidProcesp']
             empleados.save()
-            return redirect('index')
+            return redirect('listar_empleados')
         return render(request, 'empleado_create.html', {'form': form})
     
 class EquipoCreateView(View):
@@ -88,7 +88,7 @@ class EquipoCreateView(View):
             equipos.fechaInstalacion = form.cleaned_data['fechaInstalacion']
             equipos.categoria = form.cleaned_data['categoria']
             equipos.save()
-            return redirect('aaaaaa')
+            return redirect('listar_equipos')
         return render(request, 'equipo_create.html', {'form': form})
     
 class ProcesoCreateView(View):
@@ -111,7 +111,7 @@ class ProcesoCreateView(View):
             procesos.fechaFin = form.cleaned_data['fechaFin']
             procesos.FKidEquipo = form.cleaned_data['FKidEquipo']
             procesos.save()
-            return redirect('bbbbb')
+            return redirect('listar_proceso')
         return render(request, 'proceso_create.html', {'form': form})
     
 #Método que se utiliza para mostrar una pagina de inicio para eliminar objetos,

@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  h1 {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  a:hover {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  main {
+    padding: 10px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  #miLink a {
+    color: #fff;
+    text-decoration: none;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  select {
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #000000;
+    border-radius: 3px;
+  }
+  
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
+  
+  h2 {
+    text-align: left;
+    margin-top: 50px;
+  }
+  
+  
+  ul.errorlist {
+    color: red;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li.error {
+    margin: 10px 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 50px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+  }
+  
+  th {
+    background-color: #007bff;
+    color: #fffefe;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  table a:visited {
+    color: #000000;
+  }
+  
+  footer p {
+    margin-top: auto;
+  }
+  
+  footer a {
+    color: #fff;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  #opciones-eliminar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #opciones-eliminar li {
+    margin: 10px 0;
+    background-color: #ff0000;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgb(248, 0, 0);
+  }
+  
+  #opciones-eliminar li:hover {
+    background-color: #dcdcdc;
+  }
+  
