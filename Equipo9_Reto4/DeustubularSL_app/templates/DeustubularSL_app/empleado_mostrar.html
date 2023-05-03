@@ -1,33 +1,30 @@
 {% extends "base.html" %}
-
+<!--
+HTML para mostrar una lista de empleados, el nombre de cada empleado sera un link a su vista
+detallada
+-->
 {% block titulo %} Lista de empleados {% endblock %}
 
 {% block contenido %}
 <h1>Lista de Empleados</h1>
-
 <table>
     <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>DNI</th>
-            <th>Email</th>
-            <th>Telefono</th>
-            <th>Proceso</th>
-        </tr>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>Proceso</th>
+      </tr>
     </thead>
     <tbody>
-    {% for empleado in empleados %}
-        <tr>
-            <td>{{ empleado.nombre }}</td>
-            <td>{{ empleado.apellidos }}</td>
-            <td>{{ empleado.DNI }}</td>
-            <td>{{ empleado.email }}</td>
-            <td>{{ empleado.telfono }}</td>
-            <td>{{ empleado.FKidProcesp }}</td>
-            
-        </tr>
-    {% endfor %}
+      {% for empleado in empleados %}
+      <tr>
+        <td><a href="{% url 'detalle_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
+        <td>{{ empleado.apellidos }}</td>
+        <td>{{ empleado.DNI }}</td>
+        <td>{{ empleado.FKidProcesp }}</td>
+      </tr>
+      {% endfor %}
     </tbody>
-</table>
-{% endblock %}
+  </table>
+  {% endblock %}

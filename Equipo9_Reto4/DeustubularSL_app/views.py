@@ -24,12 +24,20 @@ def listar_empleados(request):
     empleados =  empleado.objects.all().order_by('FKidProcesp')
     context = {'empleados': empleados}
     return render(request, 'DeustubularSL_app/empleado_mostrar.html', context)
+#Método detalle_empleado para mostrar todos los valores de los atributos de un empleado en 
+#especifico esto se hace gracias a su id
+def detalle_empleado(request, empleado_id):
+    empleados = get_object_or_404(empleado, id=empleado_id)
+    context = {'empleados': empleados}
+    return render(request, 'DeustubularSL_app/empleado_detalle.html', context)
 
 #Lo mismo que empleados pero para equipo, en este caso se ordenan por el nombre de el equipo en ascendente
 def listar_equipos(request):
     equipos = equipo.objects.all().order_by('nombre')
     context = {'equipos': equipos}
     return render(request, 'DeustubularSL_app/equipo_mostrar.html', context)
+
+
 
 #Método para contar los empleados asociados a un proceso, luego carga una plantilla
 #que muestra Nombre Proceso -- Num empleados, cuando el usuario clicka en un 

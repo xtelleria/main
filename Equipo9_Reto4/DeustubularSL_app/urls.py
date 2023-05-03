@@ -7,8 +7,11 @@ urlpatterns = [
  # Paths para mostrar información
  path('1', views.listar_empleados, name='listar_empleados'),
  path('2', views.listar_procesos, name='listar_proceso'),
- path('3/<int:proceso_id>/', views.detalle_proceso, name='detalle_proceso'),
  path('4', views.listar_equipos, name='listar_equipos'),
+
+# Paths para vistas detalladas
+ path('5/<int:empleado_id>/', views.detalle_empleado, name='detalle_empleado'),
+ path('3/<int:proceso_id>/', views.detalle_proceso, name='detalle_proceso'),
 
 # Paths para crear nuevos objetos
  path('2/create', views.EmpleadoCreateView.as_view(), name='empleado_create'),
