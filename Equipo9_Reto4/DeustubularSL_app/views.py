@@ -7,6 +7,9 @@ from django.shortcuts import redirect
 from django.db.models import Count
 from django.views.generic import DetailView, ListView
 from DeustubularSL_app.forms import FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+
 #Métodos para la app
 
 #Método index, se dedica a reenviar al usuario al html que muestra la pagina de inicio
@@ -44,6 +47,7 @@ def detalle_proceso(request, proceso_id):
         'empleados' : empleados
     }
     return render(request, 'DeustubularSL_app/proceso_detalle.html', context)
+
 
 #Métodos para mostrar un forulario para la creacion de distintos objetos
 #En todos estos métodos hay dos apartados, cuando la petición es get; Muestra el formulario
@@ -146,7 +150,7 @@ def lista_equipos(request):
     context = {'equipos': equipos}
     return render(request, 'DeustubularSL_app/lista_equipos_a_borrar.html', context)
 def eliminar_equipo(request, id_equipo):
-    equipos = get_object_or_404(proceso, id=id_equipo)
+    equipos = get_object_or_404(equipo, id=id_equipo)
     equipos.delete()
     return redirect('lista_equipos')
 
