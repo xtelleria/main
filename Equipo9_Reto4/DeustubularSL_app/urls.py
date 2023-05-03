@@ -28,4 +28,7 @@ urlpatterns = [
 
   path('eliminar/equipo', views.lista_equipos, name='lista_equipos'),
   path('eliminar/equipo/<int:id_equipo>/', views.eliminar_equipo, name='eliminar_equipo'),
+# Paths para mostrar una pagina si alguno de los fields no es correcto
+  path('errorEmail/', views.mostrar_mensajeEmail, name='errorEmail'),
+  path('errorDni/', views.mostrar_mensajeDni, name='errorDni'),
 ]

@@ -9,6 +9,7 @@ from django.views.generic import DetailView, ListView
 from DeustubularSL_app.forms import FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+import re
 
 #Métodos para la app
 
@@ -70,7 +71,12 @@ class EmpleadoCreateView(View):
             empleados.email = form.cleaned_data['email']
             empleados.telfono = form.cleaned_data['telfono']
             empleados.FKidProcesp = form.cleaned_data['FKidProcesp']
-            empleados.save()
+            if(comprobar_email(empleados.email) and comprobar_DNI(empleados.DNI)):
+                empleados.save()
+            elif not(comprobar_DNI(empleados.DNI)):
+                return redirect('errorDni')
+            elif not(comprobar_email(empleados.email)):
+                return redirect('errorEmail')
             return redirect('listar_empleados')
         return render(request, 'empleado_create.html', {'form': form})
     
@@ -154,6 +160,33 @@ def eliminar_equipo(request, id_equipo):
     equipos.delete()
     return redirect('lista_equipos')
 
+
+#Métodos para comprobar si el dni y el correo es correcto
+def comprobar_email(email):
+    dominios_validos = ["@deustubular.es", "@deusto.es"]
+    for dominio in dominios_validos :
+        if email.endswith(dominio):
+            return True
+    else : return False
+def comprobar_DNI(dni):
+   if re.match(r'\d{8}[a-zA-Z]$', dni):
+       empleados = empleado.objects.all()
+       print(empleados)
+       for comprobar in empleados:
+         if (comprobar.DNI ==  dni):
+             print(comprobar.DNI)
+             return False
+        
+       return True
+   else :
+       return False
+
+#Métodos para cargar la pagina correspondiente para mosttrar el error
+def mostrar_mensajeEmail(request):
+     return render(request, 'DeustubularSL_app/no_valido_email.html')
+
+def mostrar_mensajeDni(request):
+     return render(request, 'DeustubularSL_app/no_valido_dni.html')
 
 
 
