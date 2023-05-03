@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de equipos {% endblock %}
+
+{% block contenido %}
+<h1>Lista de equipos</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Modelo</th>
+            <th>Fecha de Adquisicion</th>
+            <th>Fecha de Instalacion</th>
+            <th>Categoria</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for equipo in equipos %}
+        <tr>
+            <td>{{ equipo.nombre }}</td>
+            <td>{{ equipo.modelo }}</td>
+            <td>{{ equipo.fechaAdquisicion}}</td>
+            <td>{{ equipo.fechaInstalacion }}</td>
+            <td>{{ equipo.categoria }}</td>           
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

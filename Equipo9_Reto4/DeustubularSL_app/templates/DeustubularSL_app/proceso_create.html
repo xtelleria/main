@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block titulo %} Nuevo proceso {% endblock %}
+
+{% block contenido %}
+<h2>Nuevo proceso</h2>
+
+<form action="{% url 'proceso_create' %}" method="post" class="formulario">
+    {% csrf_token %}
+    {{ formulario.errors }}
+    {{ formulario.as_ul }}
+    <input type="submit" value="Nuevo proceso" />
+</form>
+
+{% endblock %}

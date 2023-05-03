@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block titulo %} Nuevo empleado {% endblock %}
+
+{% block contenido %}
+<h2>Nuevo empleado</h2>
+
+<form action="{% url 'empleado_create' %}" method="post" class="formulario">
+    {% csrf_token %}
+    {{ formulario.errors }}
+    {{ formulario.as_ul }}
+    <input type="submit" value="Nuevo empleado" />
+</form>
+
+{% endblock %}

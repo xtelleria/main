@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block titulo %} Empleados: {% endblock %}
+
+{% block contenido %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>DNI</th>
+            <th>Actualmente trabaja en </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>        
+        {% for empleado in empleados %}
+        <tr>
+          <td>{{ empleado.nombre }}</td>
+          <td>{{ empleado.apellidos }}</td>
+          <td>{{ empleado.DNI }}</td>
+          <td>{{ empleado.FKidProcesp }}</td>
+
+          <td>
+            <form action="{% url 'eliminar_empleado' empleado.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

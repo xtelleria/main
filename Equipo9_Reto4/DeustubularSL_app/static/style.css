@@ -1,0 +1,236 @@
+/* Definimos la fuente y eliminamos el margen y padding por defecto */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Definimos el encabezado con un color de fondo oscuro y texto en blanco */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Definimos el estilo para los títulos principales */
+h1 {
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Eliminamos la viñeta por defecto y el margen en las listas */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Estilo de los enlaces */
+li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+/* Estilo para cuando el mouse está sobre los enlaces */
+li a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+main {
+  padding: 10px;
+}
+
+/* Definimos el estilo del pie de página con un color de fondo oscuro y texto en blanco */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo para los enlaces dentro de un elemento con ID "miLink" */
+#miLink a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Definimos el estilo del formulario con un borde, un relleno y un borde redondeado */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 3px solid #ccc;
+  padding: 30px;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Definimos el estilo para los campos de texto y números, así como para las listas desplegables */
+input[type="text"],
+input[type="number"] select {
+  padding: 5px;
+  margin: 10px 0;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+
+h2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+ul.errorlist {
+  color: red;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li.error {
+  margin: 10px 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 50px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #000000;
+}
+
+td a {
+  color: #000000;
+  text-decoration: none;
+  padding: 10px;
+}
+
+
+
+th {
+  background-color: #007bff;
+  color: #fffefe;
+}
+
+
+footer p {
+  margin-top: auto;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+#opciones-eliminar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+#opciones-eliminar li {
+  margin: 10px 0;
+  background-color: #ff0000;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+#opciones-eliminar li:hover {
+  background-color: #dcdcdc;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 50px;
+}
+
+.box {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  overflow: hidden;
+  width: 300px;
+}
+
+.box img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.box h2 {
+  margin: 20px;
+  text-align: center;
+}
+
+.box p {
+  margin: 20px;
+  text-align: justify;
+}
+
+p {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}

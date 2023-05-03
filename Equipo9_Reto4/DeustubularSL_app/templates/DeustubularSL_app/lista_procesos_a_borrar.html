@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %} PROCESOS {% endblock %}
+
+{% block contenido %}
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Codigo de el proceso</th>
+            <th>Fecha de Inicio</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>        
+        {% for proceso in procesos %}
+        <tr>
+            <td>{{ proceso.nombre }}</td>
+            <td>{{ proceso.codigoProceso }}</td>
+            <td>{{ proceso.fechaIni }}</td>
+            <td>
+                <form action="{% url 'eliminar_proceso' proceso.id %}" method="post">
+                 {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+   
+    </tbody>
+</table>
+{% endblock %}

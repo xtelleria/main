@@ -1,0 +1,20 @@
+_________________
+PIP FREEZE MIKEL |
+_________________
+C:\Users\Hezitzaile>pip freeze
+asgiref==3.6.0
+Django==4.1.7
+sqlparse==0.4.3
+tzdata==2023.2
+
+_________________
+PIP FREEZE XABI |
+_________________
+C:\Users\Hezitzaile>pip freeze
+asgiref==3.6.0
+Django==4.1.7
+sqlparse==0.4.3
+tzdata==2023.2
+_________________
+PIP FREEZE IKER |
+_________________
