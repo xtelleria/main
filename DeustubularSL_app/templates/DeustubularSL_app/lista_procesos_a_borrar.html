@@ -12,7 +12,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>        
+    <tbody>
         {% for proceso in procesos %}
         <tr>
             <td>{{ proceso.nombre }}</td>
@@ -20,13 +20,13 @@
             <td>{{ proceso.fechaIni }}</td>
             <td>
                 <form action="{% url 'eliminar_proceso' proceso.id %}" method="post">
-                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Eliminar</button>
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
             </td>
         </tr>
         {% endfor %}
-   
+
     </tbody>
 </table>
 {% endblock %}

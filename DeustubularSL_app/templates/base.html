@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{% block titulo %}Deustubular SL{% endblock %}</title>
+
+</head>
+
+<body>
+    {% load static %}
+    <header>
+        <ul>
+            <a href="/ ">
+                <img src="{% static 'img/DEUSTUBULARSL.jpg' %}" alt="Logo" height="50px" width="130px">
+            </a>
+
+            <li><a href="http://127.0.0.1:8000/2/create">Nuevo Empleado</a></li>
+            <li><a href="http://127.0.0.1:8000/3/create">Nuevo Equipo</a></li>
+            <li><a href="http://127.0.0.1:8000/4/create">Nuevo Proceso</a></li>
+            <li><a href="http://127.0.0.1:8000/eliminar">Eliminar</a></li>
+            <li><a href="http://127.0.0.1:8000/1">Mostrar Empleados</a></li>
+            <li><a href="http://127.0.0.1:8000/4">Mostrar Equipos</a></li>
+            <li><a href="http://127.0.0.1:8000/2">Mostrar Procesos</a></li>
+
+        </ul>
+        <hr>
+    </header>
+    <main>
+        {% block contenido %}
+        {% endblock %}
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Contacto</h3>
+                    <p>Correo electrónico: deustulubar@gmail.com</p>
+                    <p>Teléfono: +34 944 334 394</p>
+                    <p>Dirección: 4 Calle Deusto, Bilbao</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">© 2023 Todos los derechos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

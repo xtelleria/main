@@ -10,6 +10,11 @@ header {
   background-color: #333;
   color: #fff;
   padding: 10px;
+  display: flexbox;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Definimos el estilo para los títulos principales */
@@ -132,7 +137,7 @@ td {
   border-bottom: 1px solid #000000;
 }
 
-td a {
+td a:hover {
   color: #000000;
   text-decoration: none;
   padding: 10px;

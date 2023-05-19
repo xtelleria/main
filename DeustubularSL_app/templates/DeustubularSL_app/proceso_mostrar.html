@@ -11,10 +11,10 @@
   </thead>
   <tbody>
     {% for proceso in procesos %}
-      <tr>
-        <td><a href="{% url 'detalle_proceso' proceso.id %}">{{ proceso.nombre }}</a></td>
-        <td>{{ proceso.num_empleados }}</td>
-      </tr>
+    <tr>
+      <td><a href="{% url 'detalle_proceso' proceso.id %}">{{ proceso.nombre }}</a></td>
+      <td>{{ proceso.num_empleados }}</td>
+    </tr>
     {% endfor %}
   </tbody>
 </table>

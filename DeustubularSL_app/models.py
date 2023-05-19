@@ -29,7 +29,7 @@ class empleado (models.Model):
     apellidos = models.CharField(max_length = 150) 
     DNI = models.CharField(max_length = 150)
     email = models.CharField(max_length = 150)
-    telfono = models.IntegerField(max_length=9,default=0)
+    telfono = models.IntegerField#(max_length=9,default=0)
     FKidProcesp = models.ForeignKey (proceso, on_delete = models.CASCADE)
     def __str__(self):
         return self.nombre

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+<!--
+HTML para mostrar una los detalles de un empleado
+-->
+{% block titulo %} Detalle de empleados {% endblock %}
+{% block contenido %}
+<h1>Detalles del empleado</h1>
+<p><strong>Nombre:</strong> {{ empleados.nombre }} {{ empleados.apellidos }}</p>
+<p><strong>DNI:</strong> {{ empleados.DNI }}</p>
+<p><strong>Email:</strong> {{ empleados.email }}</p>
+<p><strong>Teléfono:</strong> {{ empleados.telfono }}</p>
+<p><strong>Proceso:</strong> {{ empleados.FKidProcesp }}</p>
+{% endblock %}

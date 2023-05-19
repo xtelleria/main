@@ -20,10 +20,13 @@ def index(request):
 #Método listar_empleados, se dedica a extraer todos los empleados ordenados por 
 #el nombre de el proceso en ascendente,los guarda (en context) y despues redirecciona a la  pagina html correspondiente
 #para poder mostrarlos
-def listar_empleados(request):
-    empleados =  empleado.objects.all().order_by('FKidProcesp')
-    context = {'empleados': empleados}
-    return render(request, 'DeustubularSL_app/empleado_mostrar.html', context)
+class listar_empleados(ListView):
+    model= empleado
+    template_name= 'DeustubularSL_app/empleado_mostrar.html'
+    context_object_name = 'empleados'
+    #empleados =  empleado.objects.all().order_by('FKidProcesp')
+    #context = {'empleados': empleados}
+    #return render(request, 'DeustubularSL_app/empleado_mostrar.html', context)
 #Método detalle_empleado para mostrar todos los valores de los atributos de un empleado en 
 #especifico esto se hace gracias a su id
 def detalle_empleado(request, empleado_id):
@@ -31,11 +34,19 @@ def detalle_empleado(request, empleado_id):
     context = {'empleados': empleados}
     return render(request, 'DeustubularSL_app/empleado_detalle.html', context)
 
+
 #Lo mismo que empleados pero para equipo, en este caso se ordenan por el nombre de el equipo en ascendente
-def listar_equipos(request):
-    equipos = equipo.objects.all().order_by('nombre')
+
+class listar_equipos(ListView):
+    model = equipo
+    template_name = 'DeustubularSL_app/equipo_mostrar.html'
+    context_object_name = 'equipos'
+
+def detalle_equipo(request, equipo_id):
+    equipos = get_object_or_404(equipo, id=equipo_id)
     context = {'equipos': equipos}
-    return render(request, 'DeustubularSL_app/equipo_mostrar.html', context)
+    return render(request, 'DeustubularSL_app/equipo_detalle.html', context)
+
 
 #Método para contar los empleados asociados a un proceso, luego carga una plantilla
 #que muestra Nombre Proceso -- Num empleados, cuando el usuario clicka en un 
@@ -44,6 +55,7 @@ def listar_procesos(request):
     procesos = proceso.objects.annotate(num_empleados=Count('empleado'))
     context = {'procesos': procesos}
     return render(request, 'DeustubularSL_app/proceso_mostrar.html', context)
+
 
 #Método que muestra los detalles de unu proceso segun su id
 def detalle_proceso(request, proceso_id):

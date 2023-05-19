@@ -17,15 +17,15 @@
         </tr>
     </thead>
     <tbody>
-    {% for equipo in equipos %}
+        {% for equipo in equipos %}
         <tr>
-            <td>{{ equipo.nombre }}</td>
+            <td>{{ equipo.nombre }}</a></td>
             <td>{{ equipo.modelo }}</td>
             <td>{{ equipo.fechaAdquisicion}}</td>
             <td>{{ equipo.fechaInstalacion }}</td>
-            <td>{{ equipo.categoria }}</td>           
+            <td>{{ equipo.categoria }}</td>
         </tr>
-    {% endfor %}
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenido %}
+{% load static %}
+
+<div class="main-content">
+  <div class="box">
+    <img src="{% static 'img/procesos.png' %}" alt="Procesos">
+    <h2>Gestión de procesos</h2>
+    <p>Con nuestra aplicación web, podrás gestionar todos los procesos de producción de manera eficiente y sin tener que
+      imprimir toda la información. Desde la oficina podrás introducir los procesos a realizar y los operarios podrán
+      ver un listado con los procesos cuando están junto a las máquinas (e incluso actualizar la información).</p>
+  </div>
+  <div class="box">
+    <img src="{% static 'img/Equipos.jpg' %}" alt="Equipos">
+    <h2>Gestión de equipos</h2>
+    <p>Puedes gestionar los equipos de producción de manera sencilla. Con nuestra aplicación podrás registrar los
+      modelos, marcas, tipos o categorías, fechas de adquisición y de instalación de los equipos, así como asignarlos a
+      los procesos correspondientes.</p>
+  </div>
+  <div class="box">
+    <img src="{% static 'img/empleados.jpg' %}" alt="Empleados">
+    <h2>Gestión de empleados</h2>
+    <p> Nuestra aplicación también te permite gestionar a los empleados asignados a cada proceso de producción. Podrás
+      registrar su información personal (DNI, nombre, apellidos, email y teléfono) y asignarlos a los procesos
+      correspondientes.
+
+
+      {% endblock %}
