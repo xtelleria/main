@@ -96,7 +96,7 @@ class EmpleadoCreateView(View):
             elif not(comprobar_email(empleados.email)):
                 return redirect('errorEmail')
             return redirect('listar_empleados')
-        return render(request, 'empleado_create.html', {'form': form})
+        return render(request, 'DeustubularSL_app/empleado_create.html', {'form': form})
     
 class EquipoCreateView(View):
     # Llamada para mostrar la página con el formulario de creación al usuario
@@ -116,7 +116,7 @@ class EquipoCreateView(View):
             equipos.fechaInstalacion = form.cleaned_data['fechaInstalacion']
             equipos.categoria = form.cleaned_data['categoria']
             equipos.save()
-            return redirect('listar_equipos')
+            return redirect('listar_equipo')
         return render(request, 'equipo_create.html', {'form': form})
     
 class ProcesoCreateView(View):
@@ -171,6 +171,8 @@ def eliminar_proceso(request, id_proceso):
 
 def lista_equipos(request):
     equipos = equipo.objects.all()
+    for equipo in equipos:
+        equipo.procesos = proceso.objects.filter(FKidEquipo=equipo)
     context = {'equipos': equipos}
     return render(request, 'DeustubularSL_app/lista_equipos_a_borrar.html', context)
 def eliminar_equipo(request, id_equipo):

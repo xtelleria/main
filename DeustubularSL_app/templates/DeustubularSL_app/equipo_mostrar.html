@@ -13,6 +13,7 @@
             <th>Fecha de Adquisicion</th>
             <th>Fecha de Instalacion</th>
             <th>Categoria</th>
+            <th>Procesos</th>
             <th></th>
         </tr>
     </thead>
@@ -24,6 +25,13 @@
             <td>{{ equipo.fechaAdquisicion}}</td>
             <td>{{ equipo.fechaInstalacion }}</td>
             <td>{{ equipo.categoria }}</td>
+            <td>
+                {% for proceso in equipo.procesos.all %}
+                
+                    {{ proceso.nombre }}
+
+                {% endfor %}
+            </td>
         </tr>
         {% endfor %}
     </tbody>
