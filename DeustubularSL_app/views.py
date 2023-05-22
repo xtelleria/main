@@ -24,16 +24,13 @@ class listar_empleados(ListView):
     model= empleado
     template_name= 'DeustubularSL_app/empleado_mostrar.html'
     context_object_name = 'empleados'
-    #empleados =  empleado.objects.all().order_by('FKidProcesp')
-    #context = {'empleados': empleados}
-    #return render(request, 'DeustubularSL_app/empleado_mostrar.html', context)
+
 #Método detalle_empleado para mostrar todos los valores de los atributos de un empleado en 
 #especifico esto se hace gracias a su id
-def detalle_empleado(request, empleado_id):
-    empleados = get_object_or_404(empleado, id=empleado_id)
-    context = {'empleados': empleados}
-    return render(request, 'DeustubularSL_app/empleado_detalle.html', context)
-
+class DetalleEmpleadoView(DetailView):
+    model = empleado
+    template_name = 'DeustubularSL_app/empleado_detalle.html'
+    context_object_name = 'empleado'
 
 #Lo mismo que empleados pero para equipo, en este caso se ordenan por el nombre de el equipo en ascendente
 
@@ -62,11 +59,20 @@ def detalle_proceso(request, proceso_id):
     procesos = get_object_or_404(proceso, pk=proceso_id)
     empleados = empleado.objects.order_by('FKidProcesp')
     context = {
-        'proceso': procesos,
-        'empleados' : empleados
+         'proceso': procesos,
+         'empleados' : empleados
     }
     return render(request, 'DeustubularSL_app/proceso_detalle.html', context)
+class DetalleProcesoView(DetailView):
+    model = proceso
+    template_name = 'DeustubularSL_app/proceso_detalle.html'
+    context_object_name = 'proceso'
 
+def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        empleados = empleado.objects.order_by('FKidProcesp')
+        context['empleados'] = empleados
+        return context
 
 #Métodos para mostrar un forulario para la creacion de distintos objetos
 #En todos estos métodos hay dos apartados, cuando la petición es get; Muestra el formulario

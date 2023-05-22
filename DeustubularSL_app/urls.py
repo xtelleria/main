@@ -1,6 +1,6 @@
 from django.urls import path,include
 from . import views
-from .views import listar_equipos, listar_empleados
+from .views import listar_equipos, listar_empleados, DetalleEmpleadoView
 
 urlpatterns = [
 # Path para el index de la pagina
@@ -10,9 +10,9 @@ urlpatterns = [
  path('2', views.listar_procesos, name='listar_proceso'),
  path('4', listar_equipos.as_view(), name='listar_equipo'),
  # Paths para vistas detalladas
- path('5/<int:empleado_id>/', views.detalle_empleado, name='detalle_empleado'),
+ path('5/detalle_empleado<int:pk>/', DetalleEmpleadoView.as_view(), name='detalle_empleado'),
  path('3/<int:proceso_id>/', views.detalle_proceso, name='detalle_proceso'),
- path('3/<int:equipo_id>/', views.detalle_equipo, name='detalle_equipo'),
+
 
 # Paths para crear nuevos objetos
  path('2/create', views.EmpleadoCreateView.as_view(), name='empleado_create'),

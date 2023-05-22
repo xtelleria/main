@@ -20,7 +20,7 @@
     {% for empleado in empleados %}
     {% if empleado.FKidProcesp.nombre == proceso.nombre %}
     <tr>
-      <td>{{ empleado.nombre }}</td>
+      <td><a href="{% url 'detalle_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
       <td>{{ empleado.apellidos }}</td>
     </tr>
 
