@@ -8,6 +8,7 @@
 <p><strong>Fecha de Inicio:</strong> {{ proceso.fechaIni }}</p>
 <p><strong>Fecha de Fin:</strong> {{ proceso.fechaFin }}</p>
 <p><strong>Equipo asociado: </strong>{{ proceso.FKidEquipo }}</p>
+<p><button class="btn-mostrar-equipo"><a href="{% url 'listar_equipo' %}">Mostrar otros equipos</a></button></p>
 <h3><strong>Trabajadores en este proceso: </h3>
 <table>
   <thead>

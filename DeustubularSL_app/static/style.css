@@ -68,6 +68,20 @@ footer {
   text-decoration: none;
 }
 
+.btn-mostrar-equipo {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  
+}
+.btn-mostrar-equipo:hover{
+  background-color: #7cb7f7;
+}
+.btn-mostrar-equipo a{
+  text-decoration: none;
+}
+
+
 /* Definimos el estilo del formulario con un borde, un relleno y un borde redondeado */
 .formulario {
   display: flex;
