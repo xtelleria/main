@@ -37,7 +37,11 @@ class FormNuevoProceso(ModelForm):
             'FKidEquipo': 'Equipo',
 
         }
-
+class EmailForm(forms.Form):
+    asunto = forms.CharField(max_length=100)
+    cuerpo = forms.CharField(widget=forms.Textarea)
+    remitente = forms.EmailField()
+    destinatario = forms.EmailField()
 
 
 

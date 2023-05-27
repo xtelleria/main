@@ -35,4 +35,9 @@ urlpatterns = [
 # Paths para mostrar una pagina si alguno de los fields no es correcto
   path('errorEmail/', views.mostrar_mensajeEmail, name='errorEmail'),
   path('errorDni/', views.mostrar_mensajeDni, name='errorDni'),
+  # Paths para mostrar el formulario para mandar el email
+  path('enviar-correo/', views.enviar_correo, name='enviar_correo'),
+  path('filtrar-empleados/', views.filtrar_empleados, name='filtrar_empleados'),
+  path('filtrar-equipos/', views.filtrar_equipos, name='filtrar_equipos'),
+  path('filtrar-procesos/', views.filtrar_procesos, name='filtrar_procesos'),
 ]

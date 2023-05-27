@@ -4,7 +4,19 @@
 
 {% block contenido %}
 <h1>Lista de equipos</h1>
-
+<form method="GET" action="{% url 'filtrar_equipos' %}" class="filtro-form">
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="modelo">Modelo:</label>
+      <input type="text" name="modelo" id="modelo" class="form-control">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+  </form>
 <table>
     <thead>
         <tr>
@@ -32,6 +44,10 @@
 
                 {% endfor %}
             </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td>No se encontraron resultados</td>
         </tr>
         {% endfor %}
     </tbody>

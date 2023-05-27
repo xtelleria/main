@@ -9,6 +9,8 @@ from django.views.generic import DetailView, ListView
 from DeustubularSL_app.forms import FormNuevoEmpleado,FormNuevoEquipo,FormNuevoProceso
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.core.mail import send_mail
+from .forms import EmailForm
 import re
 
 #Métodos para la app
@@ -214,10 +216,62 @@ def mostrar_mensajeEmail(request):
 def mostrar_mensajeDni(request):
      return render(request, 'DeustubularSL_app/no_valido_dni.html')
 
+def mostrar_enviarCorreo(request):
+    return render(request, 'DeustubularSL_app/enviar_Email.html')
 
+def enviar_correo(request):
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            asunto = form.cleaned_data['asunto']
+            cuerpo = form.cleaned_data['cuerpo']
+            remitente = form.cleaned_data['remitente']
+            destinatario = form.cleaned_data['destinatario']
+            
+            send_mail(asunto, cuerpo, remitente, [destinatario])
+            return render(request, 'DeustubularSL_app/enviado.html')
+    else:
+            form = EmailForm()
+            return render(request, 'DeustubularSL_app/enviar_Email.html', {'form': form})
 
+def filtrar_empleados(request):
+    nombre = request.GET.get('nombre')
+    dni = request.GET.get('dni')
 
+    empleados = empleado.objects.all()
 
+    if nombre:
+        empleados = empleados.filter(nombre__icontains=nombre)
+    if dni:
+        empleados = empleados.filter(DNI=dni)
+
+    return render(request, 'DeustubularSL_app/empleado_mostrar.html', {'empleados': empleados})
+
+def filtrar_equipos(request):
+    nombre = request.GET.get('nombre')
+    modelo = request.GET.get('modelo')
+
+    equipos = equipo.objects.all()
+
+    if nombre:
+        equipos = equipos.filter(nombre__icontains=nombre)
+    if modelo:
+        equipos = equipos.filter(modelo=modelo)
+
+    return render(request, 'DeustubularSL_app/equipo_mostrar.html', {'equipos': equipos})
+
+def filtrar_procesos(request):
+    nombre = request.GET.get('nombre')
+    num_empleados = request.GET.get('num_empleados')
+
+    procesos = proceso.objects.all()
+
+    if nombre:
+        procesos = procesos.filter(nombre__icontains=nombre)
+    if num_empleados:
+        procesos = procesos.filter(num_empleados=num_empleados)
+
+    return render(request, 'DeustubularSL_app/proceso_mostrar.html', {'procesos': procesos})
 
 
 

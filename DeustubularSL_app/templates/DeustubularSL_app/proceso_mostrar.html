@@ -2,12 +2,24 @@
 {% block titulo %} Procesos {% endblock %}
 {% block contenido %}
 <h1>Lista de procesos</h1>
+<form method="GET" action="{% url 'filtrar_procesos' %}" class="filtro-form">
+  <div class="form-group">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="num_empleados">Numero de empleados:</label>
+    <input type="number" name="num_empleados" id="num_empleados" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
 <table>
   <thead>
     <tr>
       <th>Proceso</th>
       <th>Número de empleados asignados</th>
-      <th>proceso asignados</th>
     </tr>
   </thead>
   <tbody>
@@ -15,13 +27,6 @@
     <tr>
       <td><a href="{% url 'detalle_proceso' proceso.id %}">{{ proceso.nombre }}</a></td>
       <td>{{ proceso.num_empleados }}</td>
-      <td>
-      {% for equipo in procesos.equipo.all %}
-                
-                    {{ equipo.nombre }}
-
-                {% endfor %}
-              </td>
     </tr>
     {% endfor %}
   </tbody>
