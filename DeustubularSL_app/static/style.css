@@ -329,8 +329,12 @@ textarea {
   color: rgb(63, 239, 245);
 }
 .invertir-header{
-  background-color:#fff;
+  background-color:#615555;
   color:#333;
 
+}
+.invertir-footer{
+  background-color: #615555;
+  color: #141414;
 }
 
