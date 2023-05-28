@@ -13,6 +13,11 @@ class FormNuevoEmpleado(ModelForm):
             'FKidProcesp': 'Proceso Asociado',
             'telfono': 'Telefono',
         }
+  widgets = {
+            'email': forms.EmailInput(attrs={'id': 'correo'}),
+            'DNI': forms.TextInput(attrs={'id': 'DNI'}),
+
+        }
 
 
 class FormNuevoEquipo(ModelForm):

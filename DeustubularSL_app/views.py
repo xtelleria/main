@@ -97,12 +97,12 @@ class EmpleadoCreateView(View):
             empleados.email = form.cleaned_data['email']
             empleados.telfono = form.cleaned_data['telfono']
             empleados.FKidProcesp = form.cleaned_data['FKidProcesp']
-            if(comprobar_email(empleados.email) and comprobar_DNI(empleados.DNI)):
-                empleados.save()
-            elif not(comprobar_DNI(empleados.DNI)):
-                return redirect('errorDni')
-            elif not(comprobar_email(empleados.email)):
-                return redirect('errorEmail')
+            #if(comprobar_email(empleados.email) and comprobar_DNI(empleados.DNI)):
+            empleados.save()
+            #elif not(comprobar_DNI(empleados.DNI)):
+             #   return redirect('errorDni')
+            #elif not(comprobar_email(empleados.email)):
+             #   return redirect('errorEmail')
             return redirect('listar_empleados')
         return render(request, 'DeustubularSL_app/empleado_create.html', {'form': form})
     
