@@ -6,18 +6,18 @@ urlpatterns = [
 # Path para el index de la pagina
  path('', views.index, name='index'),
  # Paths para mostrar información
- path('1', listar_empleados.as_view(), name='listar_empleados'),
- path('2', views.listar_procesos, name='listar_proceso'),
- path('4', listar_equipos.as_view(), name='listar_equipo'),
+ path('empleados', listar_empleados.as_view(), name='listar_empleados'),
+ path('procesos', views.listar_procesos, name='listar_proceso'),
+ path('equipos', listar_equipos.as_view(), name='listar_equipo'),
  # Paths para vistas detalladas
- path('5/detalle_empleado<int:pk>/', DetalleEmpleadoView.as_view(), name='detalle_empleado'),
- path('3/<int:proceso_id>/', views.detalle_proceso, name='detalle_proceso'),
+ path('empleados/detalle_empleado<int:pk>/', DetalleEmpleadoView.as_view(), name='detalle_empleado'),
+ path('procesos/<int:proceso_id>/', views.detalle_proceso, name='detalle_proceso'),
 
 
 # Paths para crear nuevos objetos
- path('2/create', views.EmpleadoCreateView.as_view(), name='empleado_create'),
- path('3/create', views.EquipoCreateView.as_view(), name='equipo_create'),
- path('4/create', views.ProcesoCreateView.as_view(), name='proceso_create'),
+ path('empleados/create', views.EmpleadoCreateView.as_view(), name='empleado_create'),
+ path('equipos/create', views.EquipoCreateView.as_view(), name='equipo_create'),
+ path('procesos/create', views.ProcesoCreateView.as_view(), name='proceso_create'),
 
 # Paths para mostrar una pagina principal de borrado en la cual se selecciona
 # que se desea borrar empleados/procesos/equipos

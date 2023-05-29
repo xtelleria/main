@@ -16,13 +16,13 @@
                 <img src="{% static 'img/DEUSTUBULARSL.jpg' %}" alt="Logo" height="50px" width="130px">
             </a>
 
-            <li><a href="http://127.0.0.1:8000/2/create">Nuevo Empleado</a></li>
-            <li><a href="http://127.0.0.1:8000/3/create">Nuevo Equipo</a></li>
-            <li><a href="http://127.0.0.1:8000/4/create">Nuevo Proceso</a></li>
-            <li><a href="http://127.0.0.1:8000/eliminar">Eliminar</a></li>
-            <li><a href="http://127.0.0.1:8000/1">Mostrar Empleados</a></li>
-            <li><a href="http://127.0.0.1:8000/4">Mostrar Equipos</a></li>
-            <li><a href="http://127.0.0.1:8000/2">Mostrar Procesos</a></li>
+            <li><a href="{% url 'empleado_create' %}">Nuevo Empleado</a></li>
+            <li><a href="{% url 'equipo_create' %}">Nuevo Equipo</a></li>
+            <li><a href="{% url 'proceso_create' %}">Nuevo Proceso</a></li>
+            <li><a href="{% url 'eliminar' %}">Eliminar</a></li>
+            <li><a href="{% url 'listar_empleados' %}">Mostrar Empleados</a></li>
+            <li><a href="{% url 'listar_equipo' %}">Mostrar Equipos</a></li>
+            <li><a href="{% url 'listar_proceso' %}">Mostrar Procesos</a></li>
         </ul>
         <hr>
     </header>
