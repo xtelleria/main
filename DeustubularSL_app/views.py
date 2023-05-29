@@ -97,12 +97,12 @@ class EmpleadoCreateView(View):
             empleados.email = form.cleaned_data['email']
             empleados.telfono = form.cleaned_data['telfono']
             empleados.FKidProcesp = form.cleaned_data['FKidProcesp']
-            if(comprobar_email(empleados.email) and comprobar_DNI(empleados.DNI)):
-                empleados.save()
-            elif not(comprobar_DNI(empleados.DNI)):
-                return redirect('errorDni')
-            elif not(comprobar_email(empleados.email)):
-                return redirect('errorEmail')
+            #if(comprobar_email(empleados.email) and comprobar_DNI(empleados.DNI)):
+            empleados.save()
+            #elif not(comprobar_DNI(empleados.DNI)):
+             #   return redirect('errorDni')
+            #elif not(comprobar_email(empleados.email)):
+             #   return redirect('errorEmail')
             return redirect('listar_empleados')
         return render(request, 'DeustubularSL_app/empleado_create.html', {'form': form})
     
@@ -168,6 +168,17 @@ def eliminar_empleado(request, id_empleado):
     empleados.delete()
     return redirect('lista_empleados')
 
+def lista_equipos(request):
+    equipos = equipo.objects.all()
+    context = {'equipos': equipos}
+    return render(request, 'DeustubularSL_app/lista_equipos_a_borrar.html', context)
+def eliminar_equipo(request, id_equipo):
+    equipos = get_object_or_404(equipo, id=id_equipo)
+    equipos.delete()
+    return redirect('lista_equipos')
+
+
+
 def lista_procesos(request):
     procesos = proceso.objects.all()
     context = {'procesos': procesos}
@@ -177,16 +188,7 @@ def eliminar_proceso(request, id_proceso):
     procesos.delete()
     return redirect('lista_procesos')
 
-def lista_equipos(request):
-    equipos = equipo.objects.all()
-    for equipo in equipos:
-        equipo.procesos = proceso.objects.filter(FKidEquipo=equipo)
-    context = {'equipos': equipos}
-    return render(request, 'DeustubularSL_app/lista_equipos_a_borrar.html', context)
-def eliminar_equipo(request, id_equipo):
-    equipos = get_object_or_404(equipo, id=id_equipo)
-    equipos.delete()
-    return redirect('lista_equipos')
+
 
 
 #Métodos para comprobar si el dni y el correo es correcto
@@ -263,9 +265,9 @@ def filtrar_equipos(request):
 def filtrar_procesos(request):
     nombre = request.GET.get('nombre')
     num_empleados = request.GET.get('num_empleados')
-
-    procesos = proceso.objects.all()
-
+    
+    procesos = proceso.objects.annotate(num_empleados=Count('empleado'))
+   
     if nombre:
         procesos = procesos.filter(nombre__icontains=nombre)
     if num_empleados:

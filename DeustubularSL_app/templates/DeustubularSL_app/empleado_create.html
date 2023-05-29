@@ -5,11 +5,11 @@
 {% block contenido %}
 <h2>Nuevo empleado</h2>
 
-<form action="{% url 'empleado_create' %}" method="post" class="formulario">
+<form action="{% url 'empleado_create' %}" onsubmit="return validarFormulario()" method="post" class="formulario">
     {% csrf_token %}
     {{ formulario.errors }}
     {{ formulario.as_ul }}
     <input type="submit" value="Nuevo empleado" />
 </form>
-
+<script src="/static/JS/validar.js"></script>
 {% endblock %}

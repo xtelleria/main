@@ -4,7 +4,7 @@
 
 {% block contenido %}
 {% load static %}
-<form action="{% url 'enviar_correo' %}" method="post">
+<form action="{% url 'enviar_correo' %}" method="post" class="emaiForm">
     <h3>Enviar email</h3>
     {% csrf_token %}
     <label for="asunto">Asunto:</label>

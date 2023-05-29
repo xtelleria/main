@@ -44,11 +44,6 @@ li a {
   padding: 10px;
 }
 
-/* Estilo para cuando el mouse está sobre los enlaces */
-li a:hover {
-  background-color: #fff;
-  color: #333;
-}
 
 main {
   padding: 10px;
@@ -312,4 +307,57 @@ textarea {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+.invertir-fondo {
+  background-color: rgb(12, 12, 12);
+  color: rgb(121, 172, 234);
+  border: 1px solid white;
+}
+.invertir-td{
+  border: 1px solid white;
+}
+.invertir-urls{
+  color: cadetblue;
+}
+.invertir-urls:hover{
+  color: rgb(63, 239, 245);
+}
+.invertir-header{
+  background-color:#615555;
+  color:#333;
+
+}
+.invertir-footer{
+  background-color: #615555;
+  color: #141414;
+}
+.tema-control {
+  text-align: center;
+}
+
+.tema-control button {
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.tema-control button:hover {
+  background-color: #ddd;
+}
+
+.tema-control p {
+  margin-bottom: 5px;
+}
+.contacto a{
+  text-decoration: none;
+  }
+.contacto a:hover{
+color: #bcbcbc;
+text-decoration: none;
 }
