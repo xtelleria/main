@@ -332,7 +332,6 @@ textarea {
   background-color: #615555;
   color: #141414;
 }
-<<<<<<< HEAD
 .tema-control {
   text-align: center;
 }
@@ -362,6 +361,26 @@ textarea {
 color: #bcbcbc;
 text-decoration: none;
 }
-=======
-
->>>>>>> 60f6dbf383059d29443d79918f4f611f410ccc7d
+.button-small {
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+  background-image: url("img/luna.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.back-button{
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+  background-image: url("img/back.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  
+  
+}
+.center{
+  text-align: center;
+}

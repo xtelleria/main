@@ -19,6 +19,8 @@ function cambiarTema() {
         footer[i].classList.toggle('invertir-footer');
       }
 
+
+
     
     
   }

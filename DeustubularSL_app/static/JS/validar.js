@@ -14,12 +14,12 @@ function validarFormulario() {
         }
       }
       if (!correoValido) {
-        mostrarError('Correo no válido');
+        window.location.href = 'http://127.0.0.1:8000/errorEmail/';
         return false;
       }
 
     if (!/\d{8}[a-zA-Z]$/.test(dniInput)) {
-        mostrarError('DNI no válido');
+        window.location.href = 'http://127.0.0.1:8000/errorDni/';
         return false; // Impedir el envío del formulario
       }
   

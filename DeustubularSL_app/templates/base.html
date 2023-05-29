@@ -31,10 +31,10 @@
         {% endblock %}
     </main>
     <footer>
-<<<<<<< HEAD
         <div class="tema-control">
             <p>Haz click para cambiar de estilo</p>
-            <button onclick="cambiarTema()">Cambiar</button>
+            <button class="button-small" id="myButton" onclick="cambiarTema()">
+            </button>
             <p>Haz click para aumentar o disminuir el tamaño de la letra</p>
                 <button onclick="return cambiarTexto('+')">+</button>
                 <button onclick="return cambiarTexto('-')">-</button>
@@ -46,33 +46,13 @@
             <div>
                 
                 <div class="contacto">
-=======
-        <div class="container">
-            <button onclick="cambiarTema()">Cambiar Tema</button>
-            <div class="row">
-                <div class="col-md-4">
->>>>>>> 60f6dbf383059d29443d79918f4f611f410ccc7d
                     <h3>Contacto</h3>
                     <p>Correo electrónico: deustulubar@gmail.com</p>
                     <p>Teléfono: +34 944 334 394</p>
                     <p>Dirección: 4 Calle Deusto, Bilbao</p>
                     <p><a href="{% url 'enviar_correo' %}">Contacta con Nosotros</a></p>
-<<<<<<< HEAD
                     <hr>
                     <p>© 2023 Todos los derechos reservados</p>
-=======
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <p>Haz click para aumentar o disminuir el tamaño de la letra</p>
-                <button onclick="return cambiarTexto('+')">+</button>
-                <button onclick="return cambiarTexto('-')">-</button>
-                <script src="/static/JS/boton.js"></script>
-                <script src="/static/JS/tema.js"></script>
-                <div class="col-md-12">
-                    <p class="text-center">© 2023 Todos los derechos reservados</p>
->>>>>>> 60f6dbf383059d29443d79918f4f611f410ccc7d
                 </div>
             </div>
         </div>
