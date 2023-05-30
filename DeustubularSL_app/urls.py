@@ -40,4 +40,5 @@ urlpatterns = [
   path('filtrar-empleados/', views.filtrar_empleados, name='filtrar_empleados'),
   path('filtrar-equipos/', views.filtrar_equipos, name='filtrar_equipos'),
   path('filtrar-procesos/', views.filtrar_procesos, name='filtrar_procesos'),
+  path('api/datos/', views.datos_api, name='datos_api'),
 ]

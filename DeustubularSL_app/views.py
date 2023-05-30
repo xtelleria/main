@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.shortcuts import render, redirect
 from .models import equipo, empleado, proceso
@@ -303,5 +303,21 @@ def filtrar_procesos(request):
 
     return render(request, 'DeustubularSL_app/proceso_mostrar.html', {'procesos': procesos})
 
+
+def datos_api(request):
+    # Obtener los datos de alguna manera, por ejemplo, consultando la base de datos
+   if request.method == 'GET':
+        # Obtener los datos de la base de datos
+        datos = empleado.objects.all()
+        
+        # Serializar los datos si es necesario
+        
+        # Devolver los datos como respuesta en formato JSON
+        response_data = {
+            'data': datos
+        }
+        return JsonResponse(response_data)
+
+    # Devolver los datos como una respuesta JS
 
 
