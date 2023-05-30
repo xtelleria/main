@@ -225,16 +225,44 @@ def enviar_correo(request):
     if request.method == 'POST':
         form = EmailForm(request.POST)
         if form.is_valid():
-            asunto = form.cleaned_data['asunto']
-            cuerpo = form.cleaned_data['cuerpo']
-            remitente = form.cleaned_data['remitente']
+            Nombre_contacto = form.cleaned_data['Nombre_contacto']
             destinatario = form.cleaned_data['destinatario']
+            tipo_destinatario = form.cleaned_data['tipo_destinatario']
+            #cuerpo = form.cleaned_data['cuerpo']
+            #remitente = form.cleaned_data['remitente']
+            if tipo_destinatario == 'empresa':
+                subject = 'Oferta especial para empresas'
+                message = f'Hola {Nombre_contacto}, te enviamos un saludo desde nuestra empresa de tubos. Nos gustaría presentarte una oferta especial exclusiva para empresas como la tuya.\n\n'
+                message += 'Oferta: Descuento del 20% en todos nuestros productos para pedidos mayores a 100 unidades.\n'
+                message += 'Además, ofrecemos envío gratuito y garantía de calidad en todos nuestros productos.\n\n'
+                message += 'Estamos seguros de que nuestra amplia gama de tubos de alta calidad y nuestra excelente atención al cliente satisfarán las necesidades de tu empresa. ¡No dudes en contactarnos para más detalles!\n\n'
+                message += 'Consulta nuestro catálogo completo de productos en el siguiente enlace:\n'
+                message += 'http://www.ejemplo.com/catalogo'
+            elif tipo_destinatario == 'particular':
+                subject = 'Saludo a particular'
+                subject = 'Catálogo de productos'
+                message = f'Hola {Nombre_contacto}, te enviamos un saludo desde nuestra empresa de tubos. A continuación, te presentamos nuestro catálogo de productos:\n\n'
+                message += '1. Tubo de acero inoxidable de alta resistencia\n'
+                message += '   Descripción: Tubo fabricado en acero inoxidable de calidad premium, resistente a la corrosión.\n'
+                message += '   Precio: $29.99\n\n'
+                message += '2. Tubo de PVC para sistemas de conducción de agua\n'
+                message += '   Descripción: Tubo de PVC de alta calidad, ideal para sistemas de conducción de agua potable.\n'
+                message += '   Precio: $14.99\n\n'
+                message += '3. Tubo de cobre para instalaciones de gas\n'
+                message += '   Descripción: Tubo de cobre apto para instalaciones de gas, resistente y seguro.\n'
+                message += '   Precio: $39.99\n\n'
+                message += '¡Estos son solo algunos ejemplos de los productos que ofrecemos! Si estás interesado en alguno de ellos o necesitas más información, no dudes en contactarnos.'
             
-            send_mail(asunto, cuerpo, remitente, [destinatario])
+            from_email = 'ddeustubularsl@gmail.com'
+            
+            print(f'Nombre de contacto: {Nombre_contacto}')
+            print(f'Destinatario: {destinatario}')
+            send_mail(subject,message,from_email,[destinatario])
             return render(request, 'DeustubularSL_app/enviado.html')
     else:
+            print("AQUI")
             form = EmailForm()
-            return render(request, 'DeustubularSL_app/enviar_Email.html', {'form': form})
+    return render(request, 'DeustubularSL_app/enviar_Email.html', {'form': form})
 
 def filtrar_empleados(request):
     nombre = request.GET.get('nombre')

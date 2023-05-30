@@ -5,16 +5,22 @@
 {% block contenido %}
 {% load static %}
 <form action="{% url 'enviar_correo' %}" method="post" class="emaiForm">
-    <h3>Enviar email</h3>
+    <h3>Datos de contacto</h3>
     {% csrf_token %}
-    <label for="asunto">Asunto:</label>
-    <input type="text" id="asunto" name="asunto" required>
-    
+    <label for="Nombre_contacto">Nombre:</label>
+    <input type="text" id="Nombre_contacto" name="Nombre_contacto" required>
+  <div class="margen">
+    <select class="margen" id="tipo_destinatario" name="tipo_destinatario" required>
+        <option value="empresa">Empresa</option>
+        <option value="particular">Particular</option>
+    </select>
+  </div>
+    <!--
     <label for="cuerpo">Cuerpo:</label>
     <textarea id="cuerpo" name="cuerpo" required></textarea>
     
     <label for="remitente">Remitente:</label>
-    <input type="email" id="remitente" name="remitente" required>
+    <input type="email" id="remitente" name="remitente" required>-->
     
     <label for="destinatario">Destinatario:</label>
     <input type="email" id="destinatario" name="destinatario" required>

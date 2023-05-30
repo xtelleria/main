@@ -43,10 +43,15 @@ class FormNuevoProceso(ModelForm):
 
         }
 class EmailForm(forms.Form):
-    asunto = forms.CharField(max_length=100)
-    cuerpo = forms.CharField(widget=forms.Textarea)
-    remitente = forms.EmailField()
+    OPCIONES_DESTINATARIO = [
+        ('empresa', 'Empresa'),
+        ('particular', 'Particular'),
+    ]
+    Nombre_contacto = forms.CharField(max_length=100)
+    #cuerpo = forms.CharField(widget=forms.Textarea)
+    #remitente = forms.EmailField()
     destinatario = forms.EmailField()
+    tipo_destinatario = forms.ChoiceField(choices=OPCIONES_DESTINATARIO)
 
 
 

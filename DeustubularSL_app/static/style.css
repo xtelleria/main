@@ -384,3 +384,10 @@ text-decoration: none;
 .center{
   text-align: center;
 }
+.catalogo{
+  color: #141414;
+}
+.margen{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
