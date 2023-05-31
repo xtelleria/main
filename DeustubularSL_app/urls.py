@@ -1,12 +1,12 @@
 from django.urls import path,include
 from . import views
-from .views import listar_equipos, listar_empleados, DetalleEmpleadoView
+from .views import listar_equipos, listar_empleados, DetalleEmpleadoView, EmpleadosAPI
 
 urlpatterns = [
 # Path para el index de la pagina
  path('', views.index, name='index'),
  # Paths para mostrar información
- path('empleados', listar_empleados.as_view(), name='listar_empleados'),
+path('empleados/', listar_empleados.as_view(), name='listar_empleados'),
  path('procesos', views.listar_procesos, name='listar_proceso'),
  path('equipos', listar_equipos.as_view(), name='listar_equipo'),
  # Paths para vistas detalladas
@@ -37,8 +37,9 @@ urlpatterns = [
   path('errorDni/', views.mostrar_mensajeDni, name='errorDni'),
   # Paths para mostrar el formulario para mandar el email
   path('enviar-correo/', views.enviar_correo, name='enviar_correo'),
-  path('filtrar-empleados/', views.filtrar_empleados, name='filtrar_empleados'),
+ # path('filtrar-empleados/', views.filtrar_empleados, name='filtrar_empleados'),
   path('filtrar-equipos/', views.filtrar_equipos, name='filtrar_equipos'),
   path('filtrar-procesos/', views.filtrar_procesos, name='filtrar_procesos'),
   path('api/datos/', views.datos_api, name='datos_api'),
+  path('api/empleados/', EmpleadosAPI.as_view(), name='datos_api'),
 ]

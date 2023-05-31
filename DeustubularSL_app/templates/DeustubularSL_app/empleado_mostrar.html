@@ -1,50 +1,28 @@
 {% extends "base.html" %}
-<!--
-HTML para mostrar una lista de empleados, el nombre de cada empleado sera un link a su vista
-detallada
--->
+
 {% block titulo %} Lista de empleados {% endblock %}
 
 {% block contenido %}
-<h1>Lista de Empleados</h1>
-<form method="GET" action="{% url 'filtrar_empleados' %}" class="filtro-form">
-    <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" name="nombre" id="nombre" class="form-control">
-    </div>
-  
-    <div class="form-group">
-      <label for="dni">DNI:</label>
-      <input type="text" name="dni" id="dni" class="form-control">
-    </div>
-  
-    <button type="submit" class="btn btn-primary">Filtrar</button>
-  </form>
-
-<table>
+  <h1>Lista de Empleados</h1>
+  <table>
     <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>DNI</th>
-            <th>Proceso</th>
-        </tr>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>Proceso</th>
+        <th>Detalle</th>
+      </tr>
     </thead>
-    <tbody>
-          
-        {% for empleado in empleados %}
-          <tr>
-            <td><a href="{% url 'detalle_empleado' empleado.id %}">{{ empleado.nombre }}</a></td>
-            <td>{{ empleado.apellidos }}</td>
-            <td>{{ empleado.DNI }}</td>
-            <td>{{ empleado.FKidProcesp }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-          <td>No se encontraron resultados</td>
-        </tr>
-      {% endfor %}
+    <tbody id="empleados-body">
+      <!-- Aquí se agregarán dinámicamente las filas de empleados -->
     </tbody>
-</table>
-<script> src='/JS/DOMmostar.js'</script>
-{% endblock %}
+  </table>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/static/JS/DOMmostrar.js"></script>
+  {% endblock %}
+
+
+
+
+

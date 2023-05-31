@@ -12,6 +12,12 @@ from django.core.validators import validate_email
 from django.core.mail import send_mail
 from .forms import EmailForm
 import re
+from rest_framework.views import APIView
+from rest_framework.response import Response
+import requests
+import json
+
+
 
 #Métodos para la app
 
@@ -23,9 +29,16 @@ def index(request):
 #el nombre de el proceso en ascendente,los guarda (en context) y despues redirecciona a la  pagina html correspondiente
 #para poder mostrarlos
 class listar_empleados(ListView):
-    model= empleado
+    model = empleado
     template_name= 'DeustubularSL_app/empleado_mostrar.html'
     context_object_name = 'empleados'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        response = requests.get('http://localhost:8000/api/empleados/')
+        empleados = response.json()
+        context['empleados'] = empleados
+        return context
+    
 
 #Método detalle_empleado para mostrar todos los valores de los atributos de un empleado en 
 #especifico esto se hace gracias a su id
@@ -264,19 +277,6 @@ def enviar_correo(request):
             form = EmailForm()
     return render(request, 'DeustubularSL_app/enviar_Email.html', {'form': form})
 
-def filtrar_empleados(request):
-    nombre = request.GET.get('nombre')
-    dni = request.GET.get('dni')
-
-    empleados = empleado.objects.all()
-
-    if nombre:
-        empleados = empleados.filter(nombre__icontains=nombre)
-    if dni:
-        empleados = empleados.filter(DNI=dni)
-
-    return render(request, 'DeustubularSL_app/empleado_mostrar.html', {'empleados': empleados})
-
 def filtrar_equipos(request):
     nombre = request.GET.get('nombre')
     modelo = request.GET.get('modelo')
@@ -319,5 +319,25 @@ def datos_api(request):
         return JsonResponse(response_data)
 
     # Devolver los datos como una respuesta JS
+
+class EmpleadosAPI(APIView):
+    def get(self, request):
+        empleados = empleado.objects.all()
+        
+        data = [
+            {
+                'id': empleado.id,
+                'nombre': empleado.nombre,
+                'apellidos': empleado.apellidos,
+                'DNI': empleado.DNI,
+                'email': empleado.email,
+                'telefono': empleado.telfono,
+                'idProceso': empleado.FKidProcesp.nombre if empleado.FKidProcesp else None
+            }
+            for empleado in empleados
+            
+        ]
+
+        return Response(data)
 
 

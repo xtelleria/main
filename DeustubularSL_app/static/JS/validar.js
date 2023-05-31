@@ -13,21 +13,17 @@ function validarFormulario() {
           // Impedir el envío del formulario
         }
       }
-      if (!correoValido) {
+      if (!correoInput.endsWith(dominio)) {
         window.location.href = 'http://127.0.0.1:8000/errorEmail/';
         return false;
       }
 
     if (!/\d{8}[a-zA-Z]$/.test(dniInput)) {
         window.location.href = 'http://127.0.0.1:8000/errorDni/';
+
         return false; // Impedir el envío del formulario
       }
   
     // Validación exitosa, se puede enviar el formulario
     return true;
-  }
-  
-  function mostrarError(mensaje) {
-    alert(mensaje);
-    console.log(mensaje)
   }

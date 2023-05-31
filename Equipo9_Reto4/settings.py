@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'DeustubularSL_app',
+    'rest_framework',
     
 ]
 

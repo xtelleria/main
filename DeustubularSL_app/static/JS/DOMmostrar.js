@@ -1,33 +1,62 @@
-const API_URL= "http://127.0.0.1:8000/empleados"
-fetch(API_URL)
-    .then(response => response.json())
-    .then(json=>{
-        addRows(json);
+
+axios.get('http://127.0.0.1:8000/api/empleados/')
+  .then(response => {
+    const empleados = response.data;
+    const empleadosBody = document.getElementById('empleados-body');
+
+    empleados.forEach(empleado => {
+        console.log(empleado)
+      const row = document.createElement('tr');
+
+      const nombreCell = document.createElement('td');
+      const nombreLink = document.createElement('a');
+      nombreLink.href = '/empleados/detalle_empleado' + empleado.id + '/';
+      nombreCell.textContent = empleado.nombre;
+      row.appendChild(nombreCell);
+      nombreCell.appendChild(nombreLink);
+
+      const apellidosCell = document.createElement('td');
+      apellidosCell.textContent = empleado.apellidos;
+      row.appendChild(apellidosCell);
+
+      const dniCell = document.createElement('td');
+      dniCell.textContent = empleado.DNI;
+      row.appendChild(dniCell);
+
+      const procesoCell = document.createElement('td');
+      procesoCell.textContent = empleado.idProceso;
+      row.appendChild(procesoCell);
+
+      const detalleCell = document.createElement('td');
+      const detalleButton = document.createElement('button');
+      detalleButton.textContent = 'Ver detalle';
+      detalleButton.addEventListener('click', () => {
+        // Lógica para mostrar el detalle del empleado
+
+        mostrarDetalleEmpleado(empleado.id);
+
+      });
+      detalleCell.appendChild(detalleButton);
+      row.appendChild(detalleCell);
+    
+      empleadosBody.appendChild(row);
+    
     });
 
-function addRows(empleados) {
-    tbody = document.getElementById("tbody");
-    empleados.forEach(element => {
-        tbody.appendChild(createEmpleadosRow(element))
-    });
-}
-function createEmpleadosRow(empleados){
-    let row = document.createElement("tr")
+    function mostrarDetalleEmpleado(empleadoId) {
+      // Lógica para mostrar el detalle del empleado según el empleadoId
+      const url = `detalle_empleado${empleadoId}/`;
+      // Redirigir a la URL del detalle del empleado
+      window.location.href = url;
+    }
+    
+  })
+  .catch(error => {
+    console.error('Error al obtener los empleados:', error);
+  });
 
-    let nombre=document.createElement("td")
-    nombre.textContent= empleados.nombre;
-    row.appendChild(nombre);
 
-    let apellidos = document.createElement("td")
-    apellidos.textContent= empleados.apellidos;
-    row.appendChild(telefono);
 
-let enlace_empleado= document.createElement("td")
-let enlace = document.createElement("a")
-    enlace.setAttribute("href", "{% url 'detalle_empleado' empleado.id %}"+ empleados)
-    enlace.innerHTML="ver detalles"
-    enlace.className= "enlace"
-    enlace_empleado.appendChild(enlace);
-    row.appendChild(enlace_empleado);
-return row;
-}
+
+
+

@@ -1,3 +1,4 @@
 function volverAtras() {
-    window.history.back();
-  }
+
+  window.history.back();
+}

@@ -38,12 +38,14 @@
             <td>{{ equipo.fechaInstalacion }}</td>
             <td>{{ equipo.categoria }}</td>
             <td>
-                {% for proceso in equipo.procesos.all %}
-                
-                    {{ proceso.nombre }}
-
-                {% endfor %}
-            </td>
+              {% if equipo.procesos.all %}
+                  {% for proceso in equipo.procesos.all %}
+                      {{ proceso.nombre }}
+                  {% endfor %}
+              {% else %}
+                  Sin asignar
+              {% endif %}
+          </td>
         </tr>
         {% empty %}
         <tr>

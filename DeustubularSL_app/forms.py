@@ -14,9 +14,8 @@ class FormNuevoEmpleado(ModelForm):
             'telfono': 'Telefono',
         }
   widgets = {
-            'email': forms.EmailInput(attrs={'id': 'correo'}),
-            'DNI': forms.TextInput(attrs={'id': 'DNI'}),
-
+            'email': forms.EmailInput(attrs={'id': 'correo','placeholder': 'example@deusto.es'}),
+            'DNI': forms.TextInput(attrs={'id': 'DNI','placeholder': '11111111Z'}),
         }
 
 

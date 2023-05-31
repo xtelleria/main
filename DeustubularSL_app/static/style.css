@@ -46,7 +46,9 @@ li a {
 
 
 main {
-  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 200px;
+
 }
 
 /* Definimos el estilo del pie de página con un color de fondo oscuro y texto en blanco */
@@ -55,6 +57,7 @@ footer {
   color: #fff;
   padding: 10px;
   text-align: center;
+  
 }
 
 /* Estilo para los enlaces dentro de un elemento con ID "miLink" */
@@ -390,4 +393,7 @@ text-decoration: none;
 .margen{
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.error {
+  border: 2px solid red;
 }
