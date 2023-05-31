@@ -1,2 +1,3 @@
 # main
-principal repositorio (lo que este bien)
+Aplicación desarollado con Django
+Url del repositorio: https://github.com/xtelleria/main.git
